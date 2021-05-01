@@ -10,7 +10,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "person")
 @Data
-public abstract class Person {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person {
     @Id
     @GeneratedValue(strategy =GenerationType.AUTO)
     private Integer id;

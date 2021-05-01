@@ -21,15 +21,17 @@ public class DriverService {
     private PersonRepository personRepository;
     public DriverResponse addDriverService(Person person) throws PersonDoesNotContainValidNameException, PersonDoesNotContainValidPhoneNumberException {
 
-        if(person.getName().isEmpty() || person.getName().equals("")){
+        System.out.println(person);
+
+        if(person.getName().equals("")){
             throw new PersonDoesNotContainValidNameException("Please enter valid name");
         }
-        if(! Long.toString(person.getPhoneNumber()).isEmpty()){
-            throw new PersonDoesNotContainValidPhoneNumberException("Please enter valid name");
+        if(Long.toString(person.getPhoneNumber()).isEmpty()){
+            throw new PersonDoesNotContainValidPhoneNumberException("Please enter Phone Number");
         }
 
         Person newPerson = personRepository.save(person);
-
+        System.out.println(newPerson);
         Driver driver = new Driver();
         driver.setPerson(newPerson);
 
